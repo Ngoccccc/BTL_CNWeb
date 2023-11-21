@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> Nguyen Trong Nghia</h1>
+</body>
+<script>
+    var text, parser, xmlDoc;
+    text = "<bookstore><book>" +
+            "<title> Evertyday Italian</title>"+
+            "</book></bookstore>";
+    parser = new DOMParser();
+    xmlDoc = parser.parseFromString(text, "text/xml");
+    
+    document.getElementById("demo").innerHTML = 
+    xmlDoc.getElementsByTagName("title")[0].childNodes[0].nodeValue;
+</script>   
+</html>
