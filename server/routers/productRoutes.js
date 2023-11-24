@@ -4,6 +4,9 @@ import {
     getProductController,
     getSingleProductController,
     productPhotoController,
+    productCountController,
+    productFiltersController,
+    productListController,
 } from '../controllers/productController.js';
 
 import { requireSignIn } from '../middlewares/authMiddleware.js';
@@ -20,7 +23,17 @@ router.get("/get-product/:slug", getSingleProductController);
 //get photo
 router.get("/product-photo/:pid", productPhotoController);
 
-//delete rproduct
+//delete product
 router.delete("/delete-product/:pid", deleteProductController);
+
+//filter product
+router.post("/product-filters", productFiltersController);
+
+//product count
+router.get("/product-count", productCountController);
+
+//product per page
+router.get("/product-list/:page", productListController);
+
 
 export default router;
