@@ -1,8 +1,10 @@
-import express from "express";
-import dotenv from "dotenv";
-import morgan from "morgan";
-import connectDB from "./config/db.js";
-import cors from "cors";
+
+import cors from 'cors';
+import express from 'express';
+import dotenv from 'dotenv';
+import morgan from 'morgan';
+import connectDB from './config/db.js';
+import productRoutes from "./routers/productRoutes.js";
 
 //configure env
 dotenv.config();
@@ -13,10 +15,17 @@ connectDB();
 //rest object
 const app = express();
 
-//middlewares
+// middlewares
 app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
+
+// Routes
+app.use("/api/v1/product", productRoutes);
+
+app.get("/", (req, res) => {
+    res.send("<h1>Hello World</h1>");
+});
 
 //routes
 
