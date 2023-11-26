@@ -1,6 +1,5 @@
 import express from 'express';
 import {
-    deleteProductController,
     getProductController,
     getSingleProductController,
     productPhotoController,
@@ -22,9 +21,6 @@ router.get("/get-product/:slug", getSingleProductController);
 
 //get photo
 router.get("/product-photo/:pid", productPhotoController);
-
-//delete product
-router.delete("/delete-product/:pid", deleteProductController);
 
 //filter product
 router.post("/product-filters", productFiltersController);
