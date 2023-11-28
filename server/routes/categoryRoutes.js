@@ -5,6 +5,7 @@ import {
     createCategoryController,
     deleteCategoryController,
     updateCategoryController,
+    singleCategoryController,
 } from "../controllers/categoryController.js";
 
 const router = express.Router();
@@ -13,6 +14,9 @@ const router = express.Router();
 
 //getALl category
 router.get("/get-category", categoryController);
+
+//single category
+router.get("/single-category/:slug", singleCategoryController);
 
 // create category
 router.post(
