@@ -3,7 +3,9 @@ import {
   registerController,
   loginController,
   forgotPasswordController,
+  updateProfileController,
 } from "../controllers/authController.js";
+import { requireSignIn } from "../middlewares/authMiddleware.js";
 
 //router object
 const router = express.Router();
@@ -17,5 +19,13 @@ router.post("/login", loginController);
 
 //Forgot Password || POST
 router.post("/forgot-password", forgotPasswordController);
+
+//protected User route auth
+router.get("/user-auth", requireSignIn, (req, res) => {
+  res.status(200).send({ ok: true });
+});
+
+//update profile
+router.put("/profile", requireSignIn, updateProfileController);
 
 export default router;
