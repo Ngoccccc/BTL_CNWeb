@@ -1,15 +1,14 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { useAuth } from "../../context/auth";
 import toast from "react-hot-toast";
 import SearchInput from "../Form/SearchInput";
 import useCategory from "../../hooks/useCategory";
-import { useCart } from "../../context/cart";
 import { Badge } from "antd";
 
 const Header = () => {
   const [auth, setAuth] = useAuth();
-  const [cart] = useCart();
+  const [cart, setCart] = useState();
   const categories = useCategory();
   const handleLogout = () => {
     setAuth({
@@ -20,6 +19,29 @@ const Header = () => {
     localStorage.removeItem("auth");
     toast.success("Đăng xuất thành công");
   };
+
+  const getAllItems = async () => {
+    try {
+      const response = await fetch("http://localhost:8080/api/v1/cart", {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${auth.token}`
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok.");
+      }
+
+      const data = await response.json();
+      setCart(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    getAllItems();
+  }, [auth?.token]);
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary fixed-top">
@@ -101,9 +123,7 @@ const Header = () => {
                     <ul className="dropdown-menu">
                       <li>
                         <NavLink
-                          to={`/dashboard/${
-                            auth?.user?.role === 1 ? "admin" : "user"
-                          }`}
+                          to={`/dashboard/${auth?.user?.role === 1 ? "admin" : "user"}`}
                           className="dropdown-item"
                         >
                           Dashboard
@@ -124,7 +144,7 @@ const Header = () => {
               )}
               <li className="nav-item">
                 <NavLink to="/cart" className="nav-link">
-                  <Badge count={cart?.length} showZero offset={[10, -5]}>
+                  <Badge count={cart?.items ? cart?.items.length : 0} showZero offset={[10, -5]}>
                     Giỏ hàng
                   </Badge>
                 </NavLink>

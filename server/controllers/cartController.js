@@ -5,11 +5,13 @@ export const getCartByUserId = async (req, res) => {
     try {
         const userId = req.user._id; // Sử dụng thông tin người dùng đã được xác thực
         const cart = await Cart.findOne({ userId }).populate('items.product');
-        res.json(cart);
+        return res.json(cart);
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
 };
+
+
 
 export const addToCart = async (req, res) => {
     try {
@@ -41,7 +43,7 @@ export const addToCart = async (req, res) => {
                 totalPrice += item.quantity * productInfo.price;
             }
         }
-        cart.total = totalPrice;
+        cart.total = totalPrice.toFixed(2);
 
         await cart.save();
         res.json({ message: 'Sản phẩm đã được thêm vào giỏ hàng' });
@@ -90,7 +92,7 @@ export const updateCartItem = async (req, res) => {
                 totalPrice += item.quantity * productInfo.price;
             }
         }
-        cart.total = totalPrice;
+        cart.total = totalPrice.toFixed(2);
 
         // Lưu giỏ hàng đã cập nhật vào cơ sở dữ liệu
         await cart.save();
@@ -101,5 +103,17 @@ export const updateCartItem = async (req, res) => {
     }
 };
 
+export const deleteAllItems = async (req, res) => {
+    try {
+        const userId = req.user._id; // Sử dụng thông tin người dùng đã được xác thực
+        const cart = await Cart.findOne({ userId })
+        cart.items = [];
+        cart.total = 0;
+        cart.save()
+        return res.json(cart);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+};
 
 
