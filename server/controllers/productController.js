@@ -1,5 +1,5 @@
 import productModel from '../models/productModel.js';
-
+import categoryModel from '../models/categoryModel.js';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -89,7 +89,7 @@ export const productFiltersController = async (req, res) => {
     });
   }
 };
-  
+
 // product count
 export const productCountController = async (req, res) => {
   try {

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Checkbox, Radio } from "antd";
 import { Prices } from "../components/Prices";
-import { useCart } from "../context/cart";
+import { useAuth } from "../context/auth";
 import axios from "axios";
 import toast from "react-hot-toast";
 import Layout from "./../components/Layout/Layout";
@@ -10,7 +10,7 @@ import "../styles/Homepage.css";
 
 const HomePage = () => {
   const navigate = useNavigate();
-  const [cart, setCart] = useCart();
+  const [auth, setAuth] = useAuth();
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [checked, setChecked] = useState([]);
@@ -58,6 +58,21 @@ const HomePage = () => {
     }
   };
 
+  const addOneMoreItem = async (p) => {
+    try {
+      const { data } = await axios.post("/api/v1/cart/add", {
+        product: p
+      }, {
+        headers: {
+          Authorization: `Bearer ${auth.token}`
+        }
+      })
+      toast.success("Item Added to cart");
+    } catch (error) {
+      alert('Error adding item');
+    }
+  }
+
   useEffect(() => {
     if (page === 1) return;
     loadMore();
@@ -100,6 +115,7 @@ const HomePage = () => {
         checked,
         radio,
       });
+      console.log(data);
       setProducts(data?.products);
     } catch (error) {
       console.log(error);
@@ -180,14 +196,7 @@ const HomePage = () => {
                     </button>
                     <button
                       className="btn btn-dark ms-1"
-                      onClick={() => {
-                        setCart([...cart, p]);
-                        localStorage.setItem(
-                          "cart",
-                          JSON.stringify([...cart, p])
-                        );
-                        toast.success("Item Added to cart");
-                      }}
+                      onClick={() => addOneMoreItem(p._id)}
                     >
                       Thêm vào giỏ hàng
                     </button>

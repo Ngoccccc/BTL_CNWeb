@@ -29,7 +29,7 @@ const Login = () => {
           token: res.data.token,
         });
         localStorage.setItem("auth", JSON.stringify(res.data));
-        navigate(location.state || "/");
+        navigate(res.data.user.role == 1 ? "/dashboard/admin" : "/");
       } else {
         toast.error(res.data.message);
       }

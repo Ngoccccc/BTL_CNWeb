@@ -17,3 +17,15 @@ export const getOrdersController = async (req, res) => {
         });
     }
 };
+
+export const createOrderController = async (req, res) => {
+    let newOrder = new orderModel({ ...req.body, buyer: req.user._id });
+    try {
+        newOrder = await newOrder.save();
+        //add product to inventory
+        return res.status(200).json({ message: "Success" })
+    } catch (error) {
+        return res.json({ message: "error" })
+    }
+}
+

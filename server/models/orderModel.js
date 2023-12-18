@@ -4,9 +4,16 @@ const orderSchema = new mongoose.Schema(
     {
         products: [
             {
-                type: mongoose.ObjectId,
-                ref: "Products",
-            },
+                product: {
+                    type: mongoose.Schema.Types.ObjectId,
+                    ref: 'Products', // Tham chiếu tới schema của sản phẩm
+                    required: true
+                },
+                quantity: {
+                    type: Number,
+                    default: 1
+                }
+            }
         ],
         payment: {},
         buyer: {
@@ -18,6 +25,10 @@ const orderSchema = new mongoose.Schema(
             default: "Not Process",
             enum: ["Not Process", "Processing", "Shipped", "deliverd", "cancel"],
         },
+        total: {
+            type: Number,
+            default: 0
+        }
     },
     { timestamps: true }
 );

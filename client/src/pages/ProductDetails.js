@@ -3,12 +3,16 @@ import Layout from "./../components/Layout/Layout";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import "../styles/ProductDetailsStyles.css";
+import { useAuth } from "../context/auth";
+import toast from "react-hot-toast";
 
 const ProductDetails = () => {
   const params = useParams();
   const navigate = useNavigate();
   const [product, setProduct] = useState({});
   const [relatedProducts, setRelatedProducts] = useState([]);
+  const [auth, setAuth] = useAuth();
+
 
   //initalp details
   useEffect(() => {
@@ -37,6 +41,21 @@ const ProductDetails = () => {
       console.log(error);
     }
   };
+
+  const addOneMoreItem = async (p) => {
+    try {
+      const { data } = await axios.post("/api/v1/cart/add", {
+        product: p
+      }, {
+        headers: {
+          Authorization: `Bearer ${auth.token}`
+        }
+      })
+      toast.success("Item Added to cart");
+    } catch (error) {
+      alert('Error adding item');
+    }
+  }
   return (
     <Layout>
       <div className="row container product-details">
@@ -62,7 +81,7 @@ const ProductDetails = () => {
             })}
           </h6>
           <h6>Phân loại : {product?.category?.name}</h6>
-          <button class="btn btn-secondary ms-1">Thêm vào giỏ hàng</button>
+          <button class="btn btn-secondary ms-1" onClick={() => addOneMoreItem(product._id)}>Thêm vào giỏ hàng</button>
         </div>
       </div>
       <hr />

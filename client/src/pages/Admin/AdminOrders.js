@@ -21,7 +21,11 @@ const AdminOrders = () => {
   const [auth, setAuth] = useAuth();
   const getOrders = async () => {
     try {
-      const { data } = await axios.get("/api/v1/auth/all-orders");
+      const { data } = await axios.get("/api/v1/order/all-orders", {
+        headers: {
+          Authorization: `Bearer ${auth.token}`
+        }
+      });
       setOrders(data);
     } catch (error) {
       console.log(error);
@@ -34,8 +38,12 @@ const AdminOrders = () => {
 
   const handleChange = async (orderId, value) => {
     try {
-      const { data } = await axios.put(`/api/v1/auth/order-status/${orderId}`, {
+      const { data } = await axios.put(`/api/v1/order/order-status/${orderId}`, {
         status: value,
+      }, {
+        headers: {
+          Authorization: `Bearer ${auth.token}`
+        }
       });
       getOrders();
     } catch (error) {
