@@ -17,7 +17,7 @@ const Contact = () => {
             Mọi thắc mắc về sản phẩm, vui lòng liên hệ với chúng tôi
           </p>
           <p className="mt-3">
-            : www.banhangdacap@luadao.com
+            : www.cnwweb@cnweb.com
           </p>
           <p className="mt-3">
             : 0123456789
