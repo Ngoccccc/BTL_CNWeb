@@ -5,10 +5,14 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { Select } from "antd";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "./../../context/auth";
+
 const { Option } = Select;
 
 const CreateProduct = () => {
   const navigate = useNavigate();
+  const [auth, setAuth] = useAuth();
+
   const [categories, setCategories] = useState([]);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -47,8 +51,14 @@ const CreateProduct = () => {
       productData.append("photo", photo);
       productData.append("category", category);
       const { data } = axios.post(
-        "/api/v1/product/create-product",
+        "/api/v1/admin/product/create-product",
         productData
+        ,
+        {
+          headers: {
+            Authorization: `Bearer ${auth.token}`
+          }
+        }
       );
       if (data?.success) {
         toast.error(data?.message);

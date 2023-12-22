@@ -68,8 +68,8 @@ const AdminOrders = () => {
                       <th scope="col">Trạng thái</th>
                       <th scope="col">Người mua</th>
                       <th scope="col">Thời gian</th>
-                      <th scope="col">Thanh toán</th>
                       <th scope="col">Số lượng</th>
+                      <th scope="col">Tổng tiền</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -90,27 +90,25 @@ const AdminOrders = () => {
                       </td>
                       <td>{o?.buyer?.name}</td>
                       <td>{moment(o?.createAt).fromNow()}</td>
-                      <td>{o?.payment.success ? "Success" : "Failed"}</td>
                       <td>{o?.products?.length}</td>
+                      <td>{o?.total}</td>
                     </tr>
                   </tbody>
                 </table>
                 <div className="container">
                   {o?.products?.map((p, i) => (
-                    <div className="row mb-2 p-3 card flex-row" key={p._id}>
+                    <div className="row mb-2 p-3 card flex-row" key={p.product}>
                       <div className="col-md-4">
                         <img
-                          src={`/api/v1/product/product-photo/${p._id}`}
+                          src={`/api/v1/product/product-photo/${p.product}`}
                           className="card-img-top"
                           alt={p.name}
                           width="100px"
                           height={"100px"}
                         />
+                        <p>Số lượng: {p.quantity}</p>
                       </div>
                       <div className="col-md-8">
-                        <p>{p.name}</p>
-                        <p>{p.description.substring(0, 30)}</p>
-                        <p>Giá : {p.price}</p>
                       </div>
                     </div>
                   ))}
