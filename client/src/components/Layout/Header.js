@@ -142,13 +142,15 @@ const Header = () => {
                   </li>
                 </>
               )}
-              <li className="nav-item">
-                <NavLink to="/cart" className="nav-link">
-                  <Badge count={cart?.items ? cart?.items.length : 0} showZero offset={[10, -5]}>
-                    Giỏ hàng
-                  </Badge>
-                </NavLink>
-              </li>
+              {auth?.user?.role === 0 &&
+                <li className="nav-item">
+                  <NavLink to="/cart" className="nav-link">
+                    <Badge count={cart?.items ? cart?.items.length : 0} showZero offset={[10, -5]}>
+                      Giỏ hàng
+                    </Badge>
+                  </NavLink>
+                </li>
+              }
             </ul>
           </div>
         </div>
