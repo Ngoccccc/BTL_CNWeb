@@ -186,12 +186,12 @@ const HomePage = () => {
                     >
                       Thêm chi tiêt
                     </button>
-                    <button
+                    {auth?.user?.role === 0 && <button
                       className="btn btn-dark ms-1"
                       onClick={() => addOneMoreItem(p._id)}
                     >
                       Thêm vào giỏ hàng
-                    </button>
+                    </button>}
                   </div>
                 </div>
               </div>

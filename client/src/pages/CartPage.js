@@ -43,7 +43,7 @@ const CartPage = () => {
     try {
       const res = await axios.post("/api/v1/order/create-order", {
         products: cart.items.map(product => ({
-          product: product._id,
+          product: product.product._id,
           quantity: product.quantity
         }))
         ,
@@ -203,7 +203,7 @@ const CartPage = () => {
                         onClick={handlePayment}
                         disabled={loading || !auth?.user?.address}
                       >
-                        {loading ? "Processing ...." : "Make Payment"}
+                        {loading ? "Processing ...." : "Đặt hàng"}
                       </button>
                     </>
                   )}

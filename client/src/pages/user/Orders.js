@@ -4,10 +4,13 @@ import Layout from "./../../components/Layout/Layout";
 import axios from "axios";
 import { useAuth } from "../../context/auth";
 import moment from "moment";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
   const [auth, setAuth] = useAuth();
+  const navigate = useNavigate();
   const getOrders = async () => {
     try {
       const { data } = await axios.get("/api/v1/order/orders", {
@@ -20,10 +23,24 @@ const Orders = () => {
       console.log(error);
     }
   };
-
+  console.log(orders);
   useEffect(() => {
     if (auth?.token) getOrders();
   }, [auth?.token]);
+
+  const handleDeleteOrder = async (id) => {
+    let answer = window.prompt("Bạn chắc chắn muốn hủy đơn chứ ? ");
+    if (!answer) return;
+    const { data } = await axios.delete(
+      `/api/v1/order/delete-order/${id}`
+      , {
+        headers: {
+          Authorization: `Bearer ${auth.token}`
+        }
+      });
+    toast.success("Product DEleted Succfully");
+    getOrders();
+  }
   return (
     <Layout title={"Your Orders"}>
       {orders.length == 0 ? <h1>Loading</h1> :
@@ -46,6 +63,9 @@ const Orders = () => {
                           <th scope="col">Thời gian</th>
                           <th scope="col">Số lượng</th>
                           <th scope="col">Tổng tiền</th>
+                          <th scope="col"><button
+                            onClick={() => handleDeleteOrder(o._id)}
+                            style={{ backgroundColor: 'red', color: 'white' }}>Hủy đơn hàng</button></th>
                         </tr>
                       </thead>
                       <tbody>
@@ -56,22 +76,27 @@ const Orders = () => {
                           <td>{moment(o?.createAt).fromNow()}</td>
                           <td>{o?.products?.length}</td>
                           <td>{o?.total}</td>
+                          <td></td>
                         </tr>
                       </tbody>
                     </table>
                     <div className="container">
-                      {o?.products?.map((p, i) => (
-                        <div className="row mb-2 p-3 card flex-row" key={p.product}>
-                          <div className="col-md-4">
-                            <img
-                              src={`/api/v1/product/product-photo/${p.product}`}
-                              className="card-img-top"
-                              width="100px"
-                              height={"100px"}
-                            />
+                      {o?.products?.map((p, i) => {
+                        console.log(p);
+                        return (
+                          <div className="row mb-2 p-3 card flex-row" key={p.product}>
+                            <div className="col-md-4">
+                              <img
+                                src={`/api/v1/product/product-photo/${p.product}`}
+                                className="card-img-top"
+                                width="100px"
+                                height={"100px"}
+                              />
+                              <p>Số lượng: {p.quantity}</p>
+                            </div>
                           </div>
-                        </div>
-                      ))}
+                        )
+                      })}
                     </div>
                   </div>
                 );

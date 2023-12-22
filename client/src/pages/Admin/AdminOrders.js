@@ -50,6 +50,7 @@ const AdminOrders = () => {
       console.log(error);
     }
   };
+  console.log(orders[0]);
   return (
     <Layout title={"All Orders Data"}>
       <div className="row dashboard">

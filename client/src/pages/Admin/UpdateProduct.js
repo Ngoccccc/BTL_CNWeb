@@ -3,6 +3,7 @@ import Layout from "./../../components/Layout/Layout";
 import AdminMenu from "./../../components/Layout/AdminMenu";
 import toast from "react-hot-toast";
 import axios from "axios";
+import { useAuth } from "../../context/auth";
 import { Select } from "antd";
 import { useNavigate, useParams } from "react-router-dom";
 const { Option } = Select;
@@ -19,6 +20,8 @@ const UpdateProduct = () => {
   const [shipping, setShipping] = useState("");
   const [photo, setPhoto] = useState("");
   const [id, setId] = useState("");
+  const [auth, setAuth] = useAuth();
+
 
   //get single product
   const getSingleProduct = async () => {
@@ -71,9 +74,13 @@ const UpdateProduct = () => {
       photo && productData.append("photo", photo);
       productData.append("category", category);
       const { data } = axios.put(
-        `/api/v1/product/update-product/${id}`,
+        `/api/v1/admin/product/update-product/${id}`,
         productData
-      );
+        , {
+          headers: {
+            Authorization: `Bearer ${auth.token}`
+          }
+        });
       if (data?.success) {
         toast.error(data?.message);
       } else {
@@ -92,8 +99,12 @@ const UpdateProduct = () => {
       let answer = window.prompt("Are You Sure want to delete this product ? ");
       if (!answer) return;
       const { data } = await axios.delete(
-        `/api/v1/product/delete-product/${id}`
-      );
+        `/api/v1/admin/product/delete-product/${id}`
+        , {
+          headers: {
+            Authorization: `Bearer ${auth.token}`
+          }
+        });
       toast.success("Product DEleted Succfully");
       navigate("/dashboard/admin/products");
     } catch (error) {

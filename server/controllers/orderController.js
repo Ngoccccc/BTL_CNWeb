@@ -1,5 +1,4 @@
 import orderModel from "../models/orderModel.js";
-
 //orders
 export const getOrdersController = async (req, res) => {
     try {
@@ -26,6 +25,23 @@ export const createOrderController = async (req, res) => {
         return res.status(200).json({ message: "Success" })
     } catch (error) {
         return res.json({ message: "error" })
+    }
+}
+
+export const deleteOrderController = async (req, res) => {
+    try {
+        const deletedOrder = await orderModel.deleteOne({ _id: req.params.id, buyer: req.user._id });
+        res.status(200).send({
+            success: true,
+            message: "Order Deleted successfully",
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({
+            success: false,
+            message: "Error while deleting product",
+            error,
+        });
     }
 }
 

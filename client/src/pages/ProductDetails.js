@@ -81,7 +81,8 @@ const ProductDetails = () => {
             })}
           </h6>
           <h6>Phân loại : {product?.category?.name}</h6>
-          <button class="btn btn-secondary ms-1" onClick={() => addOneMoreItem(product._id)}>Thêm vào giỏ hàng</button>
+          {auth?.user?.role === 0 &&
+            <button class="btn btn-secondary ms-1" onClick={() => addOneMoreItem(product._id)}>Thêm vào giỏ hàng</button>}
         </div>
       </div>
       <hr />
@@ -118,19 +119,6 @@ const ProductDetails = () => {
                   >
                     Thêm thông tin
                   </button>
-                  {/* <button
-                  className="btn btn-dark ms-1"
-                  onClick={() => {
-                    setCart([...cart, p]);
-                    localStorage.setItem(
-                      "cart",
-                      JSON.stringify([...cart, p])
-                    );
-                    toast.success("Item Added to cart");
-                  }}
-                >
-                  ADD TO CART
-                </button> */}
                 </div>
               </div>
             </div>

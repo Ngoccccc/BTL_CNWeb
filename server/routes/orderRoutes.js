@@ -1,7 +1,8 @@
 import express from 'express';
 import {
     getOrdersController,
-    createOrderController
+    createOrderController,
+    deleteOrderController
 } from "../controllers/orderController.js";
 import { getAllOrdersController, orderStatusController }
     from "../controllers/orderAdminController.js"
@@ -14,8 +15,9 @@ const router = express.Router();
 // orders
 router.get("/orders", requireSignIn, getOrdersController);
 router.get("/all-orders", requireSignIn, isAdmin, getAllOrdersController);
-router.get("/order-status/:orderId", requireSignIn, isAdmin, orderStatusController);
+router.put("/order-status/:orderId", requireSignIn, isAdmin, orderStatusController);
 router.post("/create-order", requireSignIn, createOrderController);
+router.delete("/delete-order/:id", requireSignIn, deleteOrderController);
 
 
 
