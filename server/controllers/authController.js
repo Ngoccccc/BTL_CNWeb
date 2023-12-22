@@ -1,5 +1,5 @@
 import userModel from "../models/userModel.js";
-import orderModel from "../models/orderModel.js";
+import cartModel from "../models/cartModel.js";
 
 import { comparePassword, hashPassword } from "./../helpers/authHelper.js";
 import JWT from "jsonwebtoken";
@@ -46,7 +46,10 @@ export const registerController = async (req, res) => {
       password: hashedPassword,
       answer,
     }).save();
-
+    const cart = await new cartModel({
+      userId: user._id,
+      items: [],
+    }).save()
     res.status(201).send({
       success: true,
       message: "User Register Successfully",

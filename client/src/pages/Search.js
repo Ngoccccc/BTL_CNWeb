@@ -1,8 +1,28 @@
 import React from "react";
 import Layout from "./../components/Layout/Layout";
 import { useSearch } from "../context/search";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import toast from "react-hot-toast";
+import { useAuth } from "../context/auth";
 const Search = () => {
   const [values, setValues] = useSearch();
+  const [auth, setAuth] = useAuth();
+  const navigate = useNavigate();
+  const addOneMoreItem = async (p) => {
+    try {
+      const { data } = await axios.post("/api/v1/cart/add", {
+        product: p
+      }, {
+        headers: {
+          Authorization: `Bearer ${auth.token}`
+        }
+      })
+      toast.success("Item Added to cart");
+    } catch (error) {
+      alert('Error adding item');
+    }
+  }
   return (
     <Layout title={"Search results"}>
       <div className="container">
@@ -27,8 +47,8 @@ const Search = () => {
                     {p.description.substring(0, 30)}...
                   </p>
                   <p className="card-text"> $ {p.price}</p>
-                  <button class="btn btn-primary ms-1">Thêm chi tiết</button>
-                  <button class="btn btn-secondary ms-1">Thêm vào giỏ hàng</button>
+                  <button class="btn btn-primary ms-1" onClick={() => navigate(`/product/${p.slug}`)}>Thêm chi tiết</button>
+                  <button class="btn btn-secondary ms-1" onClick={() => addOneMoreItem(p._id)}>Thêm vào giỏ hàng</button>
                 </div>
               </div>
             ))}

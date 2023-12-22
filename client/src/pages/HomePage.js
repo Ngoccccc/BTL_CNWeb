@@ -123,14 +123,6 @@ const HomePage = () => {
   };
   return (
     <Layout title={"ALl Products - Best offers "}>
-      {/* banner image */}
-      <img
-        src="/images/banner.png"
-        className="banner-img"
-        alt="bannerimage"
-        width={"100%"}
-      />
-      {/* banner image */}
       <div className="container-fluid row mt-3 home-page">
         <div className="col-md-3 filters">
           <h4 className="text-center">Phân loại theo danh mục</h4>
