@@ -7,7 +7,6 @@ import { useAuth } from "../../context/auth";
 import CategoryForm from "../../components/Form/CategoryForm";
 import { Modal } from "antd";
 import { Form } from "react-router-dom";
-import { useAuth } from "../../context/auth";
 const CreateCategory = () => {
   const [categories, setCategories] = useState([]);
   const [name, setName] = useState("");

@@ -1,5 +1,6 @@
 import categoryModel from "../models/categoryModel.js";
 import slugify from "slugify";
+import productModel from "../models/productModel.js";
 export const createCategoryController = async (req, res) => {
     try {
         const { name } = req.body;
@@ -99,7 +100,13 @@ export const singleCategoryController = async (req, res) => {
 export const deleteCategoryController = async (req, res) => {
     try {
         const { id } = req.params;
+        const category = await categoryModel.findById(id);
+        // Xoá category
         await categoryModel.findByIdAndDelete(id);
+        // Xoá sản phẩm thuộc category
+        await productModel.deleteMany({
+            category: category
+        });
         res.status(200).send({
             success: true,
             message: "Category Deleted Successfully",
