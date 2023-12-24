@@ -6,6 +6,8 @@ import axios from "axios";
 import { useAuth } from "../../context/auth";
 import CategoryForm from "../../components/Form/CategoryForm";
 import { Modal } from "antd";
+import { Form } from "react-router-dom";
+import { useAuth } from "../../context/auth";
 const CreateCategory = () => {
   const [categories, setCategories] = useState([]);
   const [name, setName] = useState("");
@@ -17,13 +19,14 @@ const CreateCategory = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post("/api/v1/category/create-category", {
-        name,
-      }, {
-        headers: {
-          Authorization: `Bearer ${auth.token}`
+      const { data } = await axios.post("/api/v1/category/create-category", 
+        {name},
+        {
+          headers: {
+            Authorization: `Bearer ${auth.token}`
+          }
         }
-      });
+      );
       if (data?.success) {
         toast.success(`${name} is created`);
         getAllCategory();
