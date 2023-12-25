@@ -46,7 +46,7 @@ const Profile = () => {
         ls = JSON.parse(ls);
         ls.user = data.updatedUser;
         localStorage.setItem("auth", JSON.stringify(ls));
-        toast.success("Profile Updated Successfully");
+        toast.success("Cập nhật thành công");
       }
     } catch (error) {
       console.log(error);
@@ -71,7 +71,7 @@ const Profile = () => {
                     onChange={(e) => setName(e.target.value)}
                     className="form-control"
                     id="exampleInputEmail1"
-                    placeholder="Enter Your Name"
+                    placeholder="Họ tên"
                     autoFocus
                   />
                 </div>
@@ -82,7 +82,7 @@ const Profile = () => {
                     onChange={(e) => setEmail(e.target.value)}
                     className="form-control"
                     id="exampleInputEmail1"
-                    placeholder="Enter Your Email "
+                    placeholder="Email "
                     disabled
                   />
                 </div>
@@ -93,7 +93,7 @@ const Profile = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     className="form-control"
                     id="exampleInputPassword1"
-                    placeholder="Enter Your Password"
+                    placeholder="Mật khẩu"
                   />
                 </div>
                 <div className="mb-3">
@@ -103,7 +103,7 @@ const Profile = () => {
                     onChange={(e) => setPhone(e.target.value)}
                     className="form-control"
                     id="exampleInputEmail1"
-                    placeholder="Enter Your Phone"
+                    placeholder="Số điện thoại"
                   />
                 </div>
                 <div className="mb-3">
@@ -113,7 +113,7 @@ const Profile = () => {
                     onChange={(e) => setAddress(e.target.value)}
                     className="form-control"
                     id="exampleInputEmail1"
-                    placeholder="Enter Your Address"
+                    placeholder="Địa chỉ"
                   />
                 </div>
 
