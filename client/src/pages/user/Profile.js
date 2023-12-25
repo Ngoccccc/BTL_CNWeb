@@ -46,7 +46,7 @@ const Profile = () => {
         ls = JSON.parse(ls);
         ls.user = data.updatedUser;
         localStorage.setItem("auth", JSON.stringify(ls));
-        toast.success("Profile Updated Successfully");
+        toast.success("Cập nhật thành công");
       }
     } catch (error) {
       console.log(error);
@@ -71,7 +71,11 @@ const Profile = () => {
                     onChange={(e) => setName(e.target.value)}
                     className="form-control"
                     id="exampleInputEmail1"
+<<<<<<< HEAD
                     placeholder="Tên của bạn"
+=======
+                    placeholder="Họ tên"
+>>>>>>> 5b16d014e68eb410a373443b40e6b7f29a4e5895
                     autoFocus
                   />
                 </div>
@@ -82,7 +86,11 @@ const Profile = () => {
                     onChange={(e) => setEmail(e.target.value)}
                     className="form-control"
                     id="exampleInputEmail1"
+<<<<<<< HEAD
                     placeholder="Email của bạn"
+=======
+                    placeholder="Email "
+>>>>>>> 5b16d014e68eb410a373443b40e6b7f29a4e5895
                     disabled
                   />
                 </div>

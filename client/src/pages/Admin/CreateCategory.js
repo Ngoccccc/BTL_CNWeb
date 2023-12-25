@@ -25,7 +25,7 @@ const CreateCategory = () => {
         }
       });
       if (data?.success) {
-        toast.success(`${name} is created`);
+        toast.success(`${name} đã được tạo`);
         getAllCategory();
       } else {
         toast.error(data.message);
@@ -45,7 +45,7 @@ const CreateCategory = () => {
       }
     } catch (error) {
       console.log(error);
-      toast.error("Something wwent wrong in getting catgeory");
+      toast.error("có lỗi xảy ra khi tải catgeory");
     }
   };
 
@@ -66,7 +66,7 @@ const CreateCategory = () => {
           }
         });
       if (data?.success) {
-        toast.success(`${updatedName} is updated`);
+        toast.success(`${updatedName} đã được cập nhật`);
         setSelected(null);
         setUpdatedName("");
         setVisible(false);
@@ -89,14 +89,14 @@ const CreateCategory = () => {
           }
         });
       if (data.success) {
-        toast.success(`category is deleted`);
+        toast.success(`Danh mục đã được xóa`);
 
         getAllCategory();
       } else {
         toast.error(data.message);
       }
     } catch (error) {
-      toast.error("Somtihing went wrong");
+      toast.error("Có lỗi xảy ra");
     }
   };
   return (

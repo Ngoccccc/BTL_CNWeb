@@ -49,7 +49,11 @@ const Register = () => {
               onChange={(e) => setName(e.target.value)}
               className="form-control"
               id="exampleInputEmail1"
+<<<<<<< HEAD
               placeholder="Tên của bạn"
+=======
+              placeholder="Họ tên"
+>>>>>>> 5b16d014e68eb410a373443b40e6b7f29a4e5895
               required
               autoFocus
             />
@@ -61,7 +65,11 @@ const Register = () => {
               onChange={(e) => setEmail(e.target.value)}
               className="form-control"
               id="exampleInputEmail1"
+<<<<<<< HEAD
               placeholder="Email của bạn "
+=======
+              placeholder="Email "
+>>>>>>> 5b16d014e68eb410a373443b40e6b7f29a4e5895
               required
             />
           </div>
@@ -95,6 +103,10 @@ const Register = () => {
               className="form-control"
               id="exampleInputEmail1"
               placeholder="Địa chỉ"
+<<<<<<< HEAD
+=======
+              required
+>>>>>>> 5b16d014e68eb410a373443b40e6b7f29a4e5895
             />
           </div>
           <div className="mb-3">
@@ -104,7 +116,11 @@ const Register = () => {
               onChange={(e) => setAnswer(e.target.value)}
               className="form-control"
               id="exampleInputEmail1"
+<<<<<<< HEAD
               placeholder="Môn thể thao yêu thích là"
+=======
+              placeholder="Môn thể thao yêu thích"
+>>>>>>> 5b16d014e68eb410a373443b40e6b7f29a4e5895
               required
             />
           </div>

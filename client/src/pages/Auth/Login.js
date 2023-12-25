@@ -52,7 +52,11 @@ const Login = () => {
               onChange={(e) => setEmail(e.target.value)}
               className="form-control"
               id="exampleInputEmail1"
+<<<<<<< HEAD
               placeholder="Email của bạn "
+=======
+              placeholder="Nhập Email "
+>>>>>>> 5b16d014e68eb410a373443b40e6b7f29a4e5895
               required
             />
           </div>
@@ -63,7 +67,11 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
               className="form-control"
               id="exampleInputPassword1"
+<<<<<<< HEAD
               placeholder="Mật khẩu"
+=======
+              placeholder="Nhập mật khẩu"
+>>>>>>> 5b16d014e68eb410a373443b40e6b7f29a4e5895
               required
             />
           </div>
