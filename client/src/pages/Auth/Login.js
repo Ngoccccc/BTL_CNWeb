@@ -52,7 +52,7 @@ const Login = () => {
               onChange={(e) => setEmail(e.target.value)}
               className="form-control"
               id="exampleInputEmail1"
-              placeholder="Enter Your Email "
+              placeholder="Nhập Email "
               required
             />
           </div>
@@ -63,7 +63,7 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
               className="form-control"
               id="exampleInputPassword1"
-              placeholder="Enter Your Password"
+              placeholder="Nhập mật khẩu"
               required
             />
           </div>
