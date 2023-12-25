@@ -23,7 +23,7 @@ const CartPage = () => {
       });
 
       if (!response.ok) {
-        throw new Error("Network response was not ok.");
+        throw new Error("Mạng không ổn định.");
       }
 
       const data = await response.json();
@@ -108,9 +108,9 @@ const CartPage = () => {
                   : `Hello  ${auth?.token && auth?.user?.name}`}
                 <p className="text-center">
                   {cart?.items.length
-                    ? `You Have ${cart?.items.length} items in your cart ${auth?.token ? "" : "please login to checkout !"
+                    ? `Bạn có ${cart?.items.length} sản phẩm trong giỏ hàng ${auth?.token ? "" : "hãy đăng nhập !"
                     }`
-                    : " Your Cart Is Empty"}
+                    : " Giỏ hàng trống"}
                 </p>
               </h1>
             </div>

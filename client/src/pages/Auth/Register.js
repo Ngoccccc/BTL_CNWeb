@@ -38,7 +38,7 @@ const Register = () => {
   };
 
   return (
-    <Layout title="Register - Ecommer App">
+    <Layout title="VERSACE - Đăng ký">
       <div className="form-container" style={{ minHeight: "90vh" }}>
         <form onSubmit={handleSubmit}>
           <h4 className="title">Đăng ký</h4>
@@ -49,7 +49,11 @@ const Register = () => {
               onChange={(e) => setName(e.target.value)}
               className="form-control"
               id="exampleInputEmail1"
-              placeholder="Enter Your Name"
+<<<<<<< HEAD
+              placeholder="Tên của bạn"
+=======
+              placeholder="Họ tên"
+>>>>>>> 5b16d014e68eb410a373443b40e6b7f29a4e5895
               required
               autoFocus
             />
@@ -61,7 +65,11 @@ const Register = () => {
               onChange={(e) => setEmail(e.target.value)}
               className="form-control"
               id="exampleInputEmail1"
-              placeholder="Enter Your Email "
+<<<<<<< HEAD
+              placeholder="Email của bạn "
+=======
+              placeholder="Email "
+>>>>>>> 5b16d014e68eb410a373443b40e6b7f29a4e5895
               required
             />
           </div>
@@ -72,7 +80,7 @@ const Register = () => {
               onChange={(e) => setPassword(e.target.value)}
               className="form-control"
               id="exampleInputPassword1"
-              placeholder="Enter Your Password"
+              placeholder="Mật khẩu"
               required
             />
           </div>
@@ -83,7 +91,7 @@ const Register = () => {
               onChange={(e) => setPhone(e.target.value)}
               className="form-control"
               id="exampleInputEmail1"
-              placeholder="Enter Your Phone"
+              placeholder="Số điện thoại"
               required
             />
           </div>
@@ -94,8 +102,11 @@ const Register = () => {
               onChange={(e) => setAddress(e.target.value)}
               className="form-control"
               id="exampleInputEmail1"
-              placeholder="Enter Your Address"
+              placeholder="Địa chỉ"
+<<<<<<< HEAD
+=======
               required
+>>>>>>> 5b16d014e68eb410a373443b40e6b7f29a4e5895
             />
           </div>
           <div className="mb-3">
@@ -105,7 +116,11 @@ const Register = () => {
               onChange={(e) => setAnswer(e.target.value)}
               className="form-control"
               id="exampleInputEmail1"
-              placeholder="What is Your Favorite sports"
+<<<<<<< HEAD
+              placeholder="Môn thể thao yêu thích là"
+=======
+              placeholder="Môn thể thao yêu thích"
+>>>>>>> 5b16d014e68eb410a373443b40e6b7f29a4e5895
               required
             />
           </div>

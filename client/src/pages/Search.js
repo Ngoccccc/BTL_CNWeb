@@ -30,7 +30,7 @@ const Search = () => {
           <h1>Tìm kiếm kết quả</h1>
           <h6>
             {values?.results.length < 1
-              ? "No Products Found"
+              ? "Không có sản phẩm nào được tìm thấy"
               : `Found ${values?.results.length}`}
           </h6>
           <div className="d-flex flex-wrap mt-4">

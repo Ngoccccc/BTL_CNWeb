@@ -126,7 +126,7 @@ const Header = () => {
                           to={`/dashboard/${auth?.user?.role === 1 ? "admin" : "user"}`}
                           className="dropdown-item"
                         >
-                          Dashboard
+                          Thông tin
                         </NavLink>
                       </li>
                       <li>

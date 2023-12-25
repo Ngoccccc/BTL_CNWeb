@@ -34,7 +34,7 @@ const ForgotPasssword = () => {
     }
   };
   return (
-    <Layout title={"Forgot Password - Ecommerce APP"}>
+    <Layout title={"VERSACE - Quên mật khẩu"}>
       <div className="form-container ">
         <form onSubmit={handleSubmit}>
           <h4 className="title">Đặt lại mật khẩu</h4>
@@ -46,7 +46,11 @@ const ForgotPasssword = () => {
               onChange={(e) => setEmail(e.target.value)}
               className="form-control"
               id="exampleInputEmail1"
-              placeholder="Enter Your Email "
+<<<<<<< HEAD
+              placeholder="Email "
+=======
+              placeholder="Nhập email "
+>>>>>>> 5b16d014e68eb410a373443b40e6b7f29a4e5895
               required
             />
           </div>
@@ -57,7 +61,11 @@ const ForgotPasssword = () => {
               onChange={(e) => setAnswer(e.target.value)}
               className="form-control"
               id="exampleInputEmail1"
-              placeholder="Enter Your favorite Sport Name "
+<<<<<<< HEAD
+              placeholder="Môn thể thao yêu thích "
+=======
+              placeholder="Tên thể thao yêu thích "
+>>>>>>> 5b16d014e68eb410a373443b40e6b7f29a4e5895
               required
             />
           </div>
@@ -68,7 +76,11 @@ const ForgotPasssword = () => {
               onChange={(e) => setNewPassword(e.target.value)}
               className="form-control"
               id="exampleInputPassword1"
-              placeholder="Enter Your Password"
+<<<<<<< HEAD
+              placeholder="Mật khẩu mới"
+=======
+              placeholder="Nhập mật khẩu"
+>>>>>>> 5b16d014e68eb410a373443b40e6b7f29a4e5895
               required
             />
           </div>

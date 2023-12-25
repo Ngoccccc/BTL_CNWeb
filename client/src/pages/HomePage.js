@@ -67,9 +67,9 @@ const HomePage = () => {
           Authorization: `Bearer ${auth.token}`
         }
       })
-      toast.success("Item Added to cart");
+      toast.success("Đã thêm mặt hàng vào giỏ hàng");
     } catch (error) {
-      alert('Error adding item');
+      alert('Không thêm được vào giỏ hàng');
     }
   }
 
@@ -122,7 +122,7 @@ const HomePage = () => {
     }
   };
   return (
-    <Layout title={"ALl Products - Best offers "}>
+    <Layout title={"Sản phẩm bán chạy nhất "}>
       <div className="container-fluid row mt-3 home-page">
         <div className="col-md-3 filters">
           <h4 className="text-center">Phân loại theo danh mục</h4>
@@ -184,7 +184,7 @@ const HomePage = () => {
                       className="btn btn-info ms-1"
                       onClick={() => navigate(`/product/${p.slug}`)}
                     >
-                      Thêm chi tiêt
+                      Thêm chi tiết
                     </button>
                     {auth?.user?.role === 0 && <button
                       className="btn btn-dark ms-1"
@@ -211,7 +211,7 @@ const HomePage = () => {
                 ) : (
                   <>
                     {" "}
-                    Thêm +
+                    Xem thêm
                   </>
                 )}
               </button>
