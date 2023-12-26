@@ -5,12 +5,10 @@ import axios from "axios";
 import { useAuth } from "../../context/auth";
 import moment from "moment";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
   const [auth, setAuth] = useAuth();
-  const navigate = useNavigate();
   const getOrders = async () => {
     try {
       const { data } = await axios.get("/api/v1/order/orders", {
@@ -28,18 +26,23 @@ const Orders = () => {
     if (auth?.token) getOrders();
   }, [auth?.token]);
 
-  const handleDeleteOrder = async (id) => {
-    let answer = window.prompt("Bạn chắc chắn muốn hủy đơn chứ ? ");
-    if (!answer) return;
-    const { data } = await axios.delete(
-      `/api/v1/order/delete-order/${id}`
-      , {
-        headers: {
-          Authorization: `Bearer ${auth.token}`
-        }
-      });
-    toast.success("Product DEleted Succfully");
-    getOrders();
+  const handleDeleteOrder = async (id, canDelete) => {
+    if (canDelete) {
+      let answer = window.prompt("Bạn chắc chắn muốn hủy đơn chứ ? ");
+      if (!answer) return;
+      const { data } = await axios.delete(
+        `/api/v1/order/delete-order/${id}`
+        , {
+          headers: {
+            Authorization: `Bearer ${auth.token}`
+          }
+        });
+      toast.success("Product DEleted Succfully");
+      getOrders();
+    }
+    else {
+      alert("Không thể hủy đơn do đơn hàng đang vận chuyển hoặc đã hoàn thành")
+    }
   }
   return (
     <Layout title={"Your Orders"}>
@@ -63,9 +66,11 @@ const Orders = () => {
                           <th scope="col">Thời gian</th>
                           <th scope="col">Số lượng</th>
                           <th scope="col">Tổng tiền</th>
-                          <th scope="col"><button
-                            onClick={() => handleDeleteOrder(o._id)}
-                            style={{ backgroundColor: 'red', color: 'white' }}>Hủy đơn hàng</button></th>
+                          <th scope="col">{
+                            <button
+                              onClick={() => handleDeleteOrder(o._id, (o.status == "Not Process" || o.status == "Processing"))}
+                              style={{ backgroundColor: 'red', color: 'white' }}>Hủy đơn hàng</button>}
+                          </th>
                         </tr>
                       </thead>
                       <tbody>
@@ -75,7 +80,7 @@ const Orders = () => {
                           <td>{o?.buyer?.name}</td>
                           <td>{moment(o?.createAt).fromNow()}</td>
                           <td>{o?.products?.length}</td>
-                          <td>{o?.total}</td>
+                          <td>{o?.total}$</td>
                           <td></td>
                         </tr>
                       </tbody>
@@ -87,11 +92,13 @@ const Orders = () => {
                           <div className="row mb-2 p-3 card flex-row" key={p.product}>
                             <div className="col-md-4">
                               <img
-                                src={`/api/v1/product/product-photo/${p.product}`}
+                                src={`/api/v1/product/product-photo/${p.product._id}`}
                                 className="card-img-top"
                                 width="100px"
                                 height={"100px"}
                               />
+                              <p>Tên sản phẩm: {p.product.name}</p>
+                              <p>Giá: {p.product.price}$</p>
                               <p>Số lượng: {p.quantity}</p>
                             </div>
                           </div>
