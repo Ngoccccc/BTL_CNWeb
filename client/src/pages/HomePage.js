@@ -83,6 +83,7 @@ const HomePage = () => {
       setLoading(true);
       const { data } = await axios.get(`/api/v1/product/product-list/${page}`);
       setLoading(false);
+      filterProduct()
       setProducts([...products, ...data?.products]);
     } catch (error) {
       console.log(error);
