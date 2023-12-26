@@ -87,7 +87,7 @@ const ProductDetails = () => {
       </div>
       <hr />
       <div className="row container similar-products">
-        <h4>Sản phẩm tương tư ➡️</h4>
+        <h4>Sản phẩm tương tự </h4>
         {relatedProducts.length < 1 && (
           <p className="text-center">Không tìm thấy sản phẩm tương tự</p>
         )}

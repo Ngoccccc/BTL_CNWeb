@@ -31,7 +31,7 @@ const CreateProduct = () => {
       }
     } catch (error) {
       console.log(error);
-      toast.error("Something wwent wrong in getting catgeory");
+      toast.error("xảy ra lỗi khi tải catgeory");
     }
   };
 
@@ -68,7 +68,7 @@ const CreateProduct = () => {
       }
     } catch (error) {
       console.log(error);
-      toast.error("something went wrong");
+      toast.error("Có lỗi xảy ra");
     }
   };
 
@@ -84,7 +84,7 @@ const CreateProduct = () => {
             <div className="m-1 w-75">
               <Select
                 bordered={false}
-                placeholder="Select a category"
+                placeholder="Chọn danh mục"
                 size="large"
                 showSearch
                 className="form-select mb-3"
@@ -126,7 +126,7 @@ const CreateProduct = () => {
                 <input
                   type="text"
                   value={name}
-                  placeholder="write a name"
+                  placeholder="Nhập tên"
                   className="form-control"
                   onChange={(e) => setName(e.target.value)}
                 />
@@ -135,7 +135,7 @@ const CreateProduct = () => {
                 <textarea
                   type="text"
                   value={description}
-                  placeholder="write a description"
+                  placeholder="Nhập mô tả"
                   className="form-control"
                   onChange={(e) => setDescription(e.target.value)}
                 />
@@ -145,7 +145,7 @@ const CreateProduct = () => {
                 <input
                   type="number"
                   value={price}
-                  placeholder="write a Price"
+                  placeholder="Nhập giá"
                   className="form-control"
                   onChange={(e) => setPrice(e.target.value)}
                 />
@@ -154,7 +154,7 @@ const CreateProduct = () => {
                 <input
                   type="number"
                   value={quantity}
-                  placeholder="write a quantity"
+                  placeholder="Nhập số lượng"
                   className="form-control"
                   onChange={(e) => setQuantity(e.target.value)}
                 />
@@ -162,7 +162,7 @@ const CreateProduct = () => {
               <div className="mb-3">
                 <Select
                   bordered={false}
-                  placeholder="Select Shipping "
+                  placeholder="Chọn vận chuyển "
                   size="large"
                   showSearch
                   className="form-select mb-3"
