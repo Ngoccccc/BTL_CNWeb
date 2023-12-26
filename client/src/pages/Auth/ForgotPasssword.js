@@ -37,7 +37,7 @@ const ForgotPasssword = () => {
     <Layout title={"VERSACE - Quên mật khẩu"}>
       <div className="form-container ">
         <form onSubmit={handleSubmit}>
-          <h4 className="title">Đặt lại mật khẩu</h4>
+          <h4 className="title resetpassword">Đặt lại mật khẩu</h4>
 
           <div className="mb-3">
             <input
