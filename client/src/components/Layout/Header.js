@@ -144,9 +144,7 @@ const Header = () => {
               )}
               {auth?.user?.role === 1 &&
                 <li className="nav-item">
-                  <p>
-                  ______
-                  </p>
+                  <Link to="/contact" className="nav-link">Liên hệ</Link>
                 </li>
               }
               {auth?.user?.role === 0 &&

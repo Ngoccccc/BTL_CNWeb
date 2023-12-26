@@ -16,6 +16,12 @@
   background-color: rgba(128, 128, 128, 0.097);
   width: 18rem;
 }
+
+.card-body{
+  display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 .home-page .card-name-price {
   display: flex;
   flex-direction: row;
