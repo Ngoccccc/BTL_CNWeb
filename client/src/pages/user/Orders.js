@@ -65,7 +65,7 @@ const Orders = () => {
                           <th scope="col">Tổng tiền</th>
                           <th scope="col"><button
                             onClick={() => handleDeleteOrder(o._id)}
-                            style={{ backgroundColor: 'red', color: 'white' }}>Hủy đơn hàng</button></th>
+                            style={{ backgroundColor: '#0099FF', color: 'white', borderRadius: '10px', padding: '5px' }}>Hủy đơn hàng</button></th>
                         </tr>
                       </thead>
                       <tbody>
