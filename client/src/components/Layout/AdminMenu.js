@@ -10,7 +10,7 @@ const AdminMenu = () => {
             to="/dashboard/admin/create-category"
             className="list-group-item list-group-item-action"
           >
-            Tạo mới thể loại
+            Quản lý thể loại
           </NavLink>
           <NavLink
             to="/dashboard/admin/create-product"
@@ -22,13 +22,13 @@ const AdminMenu = () => {
             to="/dashboard/admin/products"
             className="list-group-item list-group-item-action"
           >
-            Sản phẩm
+            Danh sách sản phẩm
           </NavLink>
           <NavLink
             to="/dashboard/admin/orders"
             className="list-group-item list-group-item-action"
           >
-            Đơn hàng
+            Danh sách đơn hàng
           </NavLink>
           {/* <NavLink
             to="/dashboard/admin/users"

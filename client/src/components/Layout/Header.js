@@ -142,6 +142,13 @@ const Header = () => {
                   </li>
                 </>
               )}
+              {auth?.user?.role === 1 &&
+                <li className="nav-item">
+                  <p>
+                  ______
+                  </p>
+                </li>
+              }
               {auth?.user?.role === 0 &&
                 <li className="nav-item">
                   <NavLink to="/cart" className="nav-link">
