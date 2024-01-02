@@ -5,7 +5,7 @@ const AdminMenu = () => {
     <>
       <div className="text-center">
         <div className="list-group dashboard-menu">
-          <h4>Trang admin</h4>
+          <h4>DASHBOARD</h4>
           <NavLink
             to="/dashboard/admin/create-category"
             className="list-group-item list-group-item-action"
@@ -16,7 +16,7 @@ const AdminMenu = () => {
             to="/dashboard/admin/create-product"
             className="list-group-item list-group-item-action"
           >
-            Thêm mới sản phẩm
+            Tạo sản phẩm mới
           </NavLink>
           <NavLink
             to="/dashboard/admin/products"
@@ -30,12 +30,12 @@ const AdminMenu = () => {
           >
             Danh sách đơn hàng
           </NavLink>
-          {/* <NavLink
+          <NavLink
             to="/dashboard/admin/users"
             className="list-group-item list-group-item-action"
           >
             Users
-          </NavLink> */}
+          </NavLink> 
         </div>
       </div>
     </>

@@ -185,7 +185,7 @@ const HomePage = () => {
                       className="btn btn-info ms-1"
                       onClick={() => navigate(`/product/${p.slug}`)}
                     >
-                      Thêm chi tiết
+                      Xem chi tiết
                     </button>
                     {auth?.user?.role === 0 && <button
                       className="btn btn-dark ms-1"

@@ -47,7 +47,7 @@ const CreateCategory = () => {
       }
     } catch (error) {
       console.log(error);
-      toast.error("có lỗi xảy ra khi tải catgeory");
+      toast.error("có lỗi xảy ra khi tải category");
     }
   };
 
